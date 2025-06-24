@@ -3,54 +3,42 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { useCart } from '@/contexts/CartContext';
 
-const ProductGrid = () => {
+const Children = () => {
   const { addToCart, addToWishlist, isInWishlist } = useCart();
 
   const products = [
     {
-      id: 1,
-      name: "Classic Wool Coat",
-      price: 299.99,
-      originalPrice: 399.99,
-      image: "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400&h=500&fit=crop",
-      category: "Women"
+      id: 301,
+      name: "Organic Cotton Set",
+      price: 59.99,
+      originalPrice: 79.99,
+      image: "https://images.unsplash.com/photo-1622290291011-1aa8fab01c14?w=400&h=500&fit=crop",
+      category: "Children"
     },
     {
-      id: 2,
-      name: "Tailored Blazer",
-      price: 199.99,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
-      category: "Men"
-    },
-    {
-      id: 3,
-      name: "Silk Evening Dress",
-      price: 249.99,
-      image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop",
-      category: "Women"
-    },
-    {
-      id: 4,
-      name: "Casual Denim Jacket",
-      price: 89.99,
+      id: 302,
+      name: "Kids Denim Jacket",
+      price: 69.99,
       image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=500&fit=crop",
       category: "Children"
     },
     {
-      id: 5,
-      name: "Premium Cotton Shirt",
-      price: 79.99,
-      image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=500&fit=crop",
-      category: "Men"
+      id: 303,
+      name: "Cozy Winter Sweater",
+      price: 49.99,
+      image: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a5?w=400&h=500&fit=crop",
+      category: "Children"
     },
     {
-      id: 6,
-      name: "Elegant Midi Skirt",
-      price: 129.99,
-      image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=500&fit=crop",
-      category: "Women"
+      id: 304,
+      name: "Comfortable Play Outfit",
+      price: 39.99,
+      image: "https://images.unsplash.com/photo-1622290291011-1aa8fab01c14?w=400&h=500&fit=crop",
+      category: "Children"
     }
   ];
 
@@ -77,31 +65,30 @@ const ProductGrid = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white">
+      <Header />
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-navy mb-4">
-            New Arrivals
-          </h2>
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-navy mb-4">
+            Children's Collection
+          </h1>
           <p className="font-inter text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our latest collection of premium clothing, carefully curated for style and comfort.
+            Stylish, comfortable, and durable clothing for every adventure.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
               className="group bg-ivory rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <div className="relative overflow-hidden">
@@ -110,7 +97,7 @@ const ProductGrid = () => {
                   alt={product.name}
                   className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-4 right-4 space-y-2">
+                <div className="absolute top-4 right-4">
                   <Button
                     size="icon"
                     variant="ghost"
@@ -122,13 +109,9 @@ const ProductGrid = () => {
                     <Heart className={`w-4 h-4 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
                   </Button>
                 </div>
-                <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/20 transition-all duration-300"></div>
               </div>
               
               <div className="p-6">
-                <span className="text-xs text-gray-500 font-inter uppercase tracking-wide">
-                  {product.category}
-                </span>
                 <h3 className="font-playfair text-lg font-semibold text-navy mt-1 mb-2">
                   {product.name}
                 </h3>
@@ -154,9 +137,10 @@ const ProductGrid = () => {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+      </main>
+      <Footer />
+    </div>
   );
 };
 
-export default ProductGrid;
+export default Children;

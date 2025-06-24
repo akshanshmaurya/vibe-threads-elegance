@@ -2,8 +2,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
 
 const BestSellers = () => {
+  const { addToCart, addToWishlist, isInWishlist } = useCart();
+
   const products = [
     {
       id: 1,
@@ -67,6 +70,28 @@ const BestSellers = () => {
     },
   ];
 
+  const handleAddToCart = (product: any) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: 'M',
+      color: 'Default',
+      category: product.category
+    });
+  };
+
+  const handleWishlist = (product: any) => {
+    addToWishlist({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category
+    });
+  };
+
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -111,14 +136,20 @@ const BestSellers = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute top-3 right-3 bg-white/80 hover:bg-white text-navy opacity-0 group-hover:opacity-100 transition-all"
+                  onClick={() => handleWishlist(product)}
+                  className={`absolute top-3 right-3 bg-white/80 hover:bg-white transition-all opacity-0 group-hover:opacity-100 ${
+                    isInWishlist(product.id) ? 'text-red-500' : 'text-navy'
+                  }`}
                 >
-                  <Heart className="h-4 w-4" />
+                  <Heart className={`h-4 w-4 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
                 </Button>
 
                 {/* Quick add to cart overlay */}
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all">
-                  <Button className="w-full bg-gold hover:bg-gold/90 text-white font-inter font-semibold">
+                  <Button 
+                    className="w-full bg-gold hover:bg-gold/90 text-white font-inter font-semibold"
+                    onClick={() => handleAddToCart(product)}
+                  >
                     <ShoppingCart className="h-4 w-4 mr-2" />
                     Add to Cart
                   </Button>

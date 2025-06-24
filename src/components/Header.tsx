@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { Search, ShoppingCart, Heart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useCart } from '@/contexts/CartContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { getTotalItems, wishlistItems } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -44,15 +46,15 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 flex-1 justify-center">
-            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+            <Link to="/men" className="text-navy hover:text-gold transition-colors font-inter font-medium">
               Men
-            </a>
-            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+            </Link>
+            <Link to="/women" className="text-navy hover:text-gold transition-colors font-inter font-medium">
               Women
-            </a>
-            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+            </Link>
+            <Link to="/children" className="text-navy hover:text-gold transition-colors font-inter font-medium">
               Children
-            </a>
+            </Link>
             <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
               New Arrivals
             </a>
@@ -66,15 +68,24 @@ const Header = () => {
             <Button variant="ghost" size="icon" className="text-navy hover:text-gold">
               <Search className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="text-navy hover:text-gold">
-              <Heart className="h-5 w-5" />
-            </Button>
+            <Link to="/wishlist">
+              <Button variant="ghost" size="icon" className="text-navy hover:text-gold relative">
+                <Heart className="h-5 w-5" />
+                {wishlistItems.length > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {wishlistItems.length}
+                  </span>
+                )}
+              </Button>
+            </Link>
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="text-navy hover:text-gold relative">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  2
-                </span>
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {getTotalItems()}
+                  </span>
+                )}
               </Button>
             </Link>
           </div>
@@ -84,15 +95,15 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100">
             <nav className="flex flex-col space-y-4">
-              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+              <Link to="/men" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
                 Men
-              </a>
-              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+              </Link>
+              <Link to="/women" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
                 Women
-              </a>
-              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+              </Link>
+              <Link to="/children" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
                 Children
-              </a>
+              </Link>
               <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
                 New Arrivals
               </a>

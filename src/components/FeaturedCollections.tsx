@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const FeaturedCollections = () => {
   const collections = [
@@ -10,6 +11,7 @@ const FeaturedCollections = () => {
       description: "Tailored suits, premium shirts, and contemporary casual wear",
       image: "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop&crop=face",
       category: "men",
+      link: "/men"
     },
     {
       id: 2,
@@ -17,6 +19,7 @@ const FeaturedCollections = () => {
       description: "Elegant dresses, sophisticated blouses, and timeless pieces",
       image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&h=800&fit=crop&crop=face",
       category: "women",
+      link: "/women"
     },
     {
       id: 3,
@@ -24,6 +27,7 @@ const FeaturedCollections = () => {
       description: "Stylish, comfortable, and durable clothing for every adventure",
       image: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a5?w=600&h=800&fit=crop&crop=face",
       category: "children",
+      link: "/children"
     },
   ];
 
@@ -63,11 +67,13 @@ const FeaturedCollections = () => {
                 <p className="font-inter text-sm mb-4 text-gray-200">
                   {collection.description}
                 </p>
-                <Button 
-                  className="bg-gold hover:bg-gold/90 text-white font-inter font-semibold transition-all hover:scale-105"
-                >
-                  Shop {collection.category === 'children' ? 'Kids' : collection.category.charAt(0).toUpperCase() + collection.category.slice(1)}
-                </Button>
+                <Link to={collection.link}>
+                  <Button 
+                    className="bg-gold hover:bg-gold/90 text-white font-inter font-semibold transition-all hover:scale-105"
+                  >
+                    Shop {collection.category === 'children' ? 'Kids' : collection.category.charAt(0).toUpperCase() + collection.category.slice(1)}
+                  </Button>
+                </Link>
               </div>
 
               {/* Hover effect overlay */}

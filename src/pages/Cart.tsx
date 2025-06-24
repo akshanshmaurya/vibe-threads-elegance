@@ -6,33 +6,39 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useCart } from '@/contexts/CartContext';
 
 const Cart = () => {
-  // Mock cart items
-  const cartItems = [
-    {
-      id: 1,
-      name: "Men's Tailored Wool Blazer",
-      price: 299.99,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop",
-      size: "L",
-      color: "Navy",
-      quantity: 1
-    },
-    {
-      id: 2,
-      name: "Women's Silk Midi Dress",
-      price: 189.99,
-      image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=300&h=400&fit=crop",
-      size: "M",
-      color: "Ivory",
-      quantity: 2
-    }
-  ];
+  const { cartItems, removeFromCart, updateQuantity, getTotalPrice } = useCart();
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const subtotal = getTotalPrice();
   const shipping = subtotal > 75 ? 0 : 9.99;
   const total = subtotal + shipping;
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center py-16"
+          >
+            <h1 className="font-playfair text-3xl md:text-4xl font-bold text-navy mb-4">Your Cart is Empty</h1>
+            <p className="text-gray-600 mb-8">Start adding items to your cart to see them here</p>
+            <Link to="/">
+              <Button className="bg-gold hover:bg-gold/90 text-white font-semibold py-3 px-8">
+                Start Shopping
+              </Button>
+            </Link>
+          </motion.div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -56,7 +62,7 @@ const Cart = () => {
             <div className="lg:col-span-2">
               {cartItems.map((item, index) => (
                 <motion.div
-                  key={item.id}
+                  key={`${item.id}-${item.size}-${item.color}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -73,15 +79,30 @@ const Cart = () => {
                     <p className="font-semibold text-gold">${item.price}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button variant="outline" size="icon" className="h-8 w-8">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="h-8 w-8"
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    >
                       <Minus className="h-4 w-4" />
                     </Button>
                     <span className="w-8 text-center">{item.quantity}</span>
-                    <Button variant="outline" size="icon" className="h-8 w-8">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="h-8 w-8"
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    >
                       <Plus className="h-4 w-4" />
                     </Button>
                   </div>
-                  <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="text-red-500 hover:text-red-700"
+                    onClick={() => removeFromCart(item.id)}
+                  >
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </motion.div>
