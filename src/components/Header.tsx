@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
-import { Search, ShoppingCart, Heart, Menu, X } from 'lucide-react';
+import { ShoppingCart, Heart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useCart } from '@/contexts/CartContext';
+import SearchDialog from './SearchDialog';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top bar with promotional message */}
         <div className="bg-navy text-ivory text-center py-2 text-sm">
-          Free shipping on orders over $75 | Hassle-free returns within 15 days
+          Free shipping on orders over ₹6,250 | Hassle-free returns within 15 days
         </div>
         
         {/* Main header */}
@@ -55,19 +56,17 @@ const Header = () => {
             <Link to="/children" className="text-navy hover:text-gold transition-colors font-inter font-medium">
               Children
             </Link>
-            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+            <Link to="/new-arrivals" className="text-navy hover:text-gold transition-colors font-inter font-medium">
               New Arrivals
-            </a>
-            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+            </Link>
+            <Link to="/sale" className="text-navy hover:text-gold transition-colors font-inter font-medium">
               Sale
-            </a>
+            </Link>
           </nav>
 
           {/* Right side icons */}
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="text-navy hover:text-gold">
-              <Search className="h-5 w-5" />
-            </Button>
+            <SearchDialog />
             <Link to="/wishlist">
               <Button variant="ghost" size="icon" className="text-navy hover:text-gold relative">
                 <Heart className="h-5 w-5" />
@@ -104,12 +103,12 @@ const Header = () => {
               <Link to="/children" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
                 Children
               </Link>
-              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+              <Link to="/new-arrivals" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
                 New Arrivals
-              </a>
-              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+              </Link>
+              <Link to="/sale" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
                 Sale
-              </a>
+              </Link>
             </nav>
           </div>
         )}

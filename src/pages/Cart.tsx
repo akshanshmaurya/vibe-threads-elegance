@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
@@ -76,7 +75,7 @@ const Cart = () => {
                   <div className="flex-1">
                     <h3 className="font-inter font-semibold text-navy">{item.name}</h3>
                     <p className="text-gray-600 text-sm">Size: {item.size} | Color: {item.color}</p>
-                    <p className="font-semibold text-gold">${item.price}</p>
+                    <p className="font-semibold text-gold">₹{item.price.toLocaleString()}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <Button 
@@ -120,16 +119,16 @@ const Cart = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>₹{subtotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Shipping</span>
-                  <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                  <span>{shipping === 0 ? 'Free' : `₹${shipping.toLocaleString()}`}</span>
                 </div>
                 <hr className="border-gray-300" />
                 <div className="flex justify-between font-semibold text-lg">
                   <span>Total</span>
-                  <span className="text-gold">${total.toFixed(2)}</span>
+                  <span className="text-gold">₹{total.toLocaleString()}</span>
                 </div>
               </div>
               <Link to="/checkout">
