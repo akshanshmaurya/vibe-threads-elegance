@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export interface CartItem {
@@ -42,29 +41,7 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: "Men's Tailored Wool Blazer",
-      price: 24999,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop",
-      size: "L",
-      color: "Navy",
-      quantity: 1,
-      category: "Men"
-    },
-    {
-      id: 2,
-      name: "Women's Silk Midi Dress",
-      price: 15799,
-      image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=300&h=400&fit=crop",
-      size: "M",
-      color: "Ivory",
-      quantity: 2,
-      category: "Women"
-    }
-  ]);
-
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
 
   const addToCart = (item: Omit<CartItem, 'quantity'>) => {
