@@ -1,4 +1,3 @@
-
 export interface Product {
   id: number;
   name: string;
@@ -136,7 +135,7 @@ export const products: Product[] = [
   {
     id: 14,
     name: "Party Dress",
-    price: 8999,
+    price: 24897, // Converted from $299.99
     image: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=400&h=500&fit=crop",
     category: "Children",
     isNewArrival: true,

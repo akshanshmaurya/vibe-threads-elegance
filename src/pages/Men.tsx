@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, ShoppingCart } from 'lucide-react';
@@ -14,30 +13,30 @@ const Men = () => {
     {
       id: 101,
       name: "Classic Wool Blazer",
-      price: 299.99,
-      originalPrice: 399.99,
+      price: 24899,  // Converted from $299.99
+      originalPrice: 33199, // Converted from $399.99
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
       category: "Men"
     },
     {
       id: 102,
       name: "Premium Cotton Shirt",
-      price: 89.99,
+      price: 7469, // Converted from $89.99
       image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=500&fit=crop",
       category: "Men"
     },
     {
       id: 103,
       name: "Leather Dress Shoes",
-      price: 189.99,
-      originalPrice: 229.99,
+      price: 15769, // Converted from $189.99
+      originalPrice: 19089, // Converted from $229.99
       image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=500&fit=crop",
       category: "Men"
     },
     {
       id: 104,
       name: "Casual Denim Jacket",
-      price: 129.99,
+      price: 10789, // Converted from $129.99
       image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=500&fit=crop",
       category: "Men"
     }
@@ -118,10 +117,10 @@ const Men = () => {
                 </h3>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-gold font-bold text-lg">${product.price}</span>
+                    <span className="text-gold font-bold text-lg">₹{product.price}</span>
                     {product.originalPrice && (
                       <span className="text-gray-400 line-through text-sm">
-                        ${product.originalPrice}
+                        ₹{product.originalPrice}
                       </span>
                     )}
                   </div>

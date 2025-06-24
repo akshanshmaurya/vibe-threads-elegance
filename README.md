@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# Vibe Threads Elegance
 
-## Project info
+A modern e-commerce platform built with Next.js 13, MongoDB, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/1b8e6bb3-8933-40a5-88d4-486699c9c09e
+## Features
 
-## How can I edit this code?
+- 🛍️ Product Management (Admin Dashboard)
+- 🛒 Shopping Cart
+- 💝 Wishlist
+- 👕 Category Filtering
+- 🎨 Modern UI with shadcn/ui
+- 📱 Responsive Design
+- 🔐 Admin Authentication
+- 📦 MongoDB Integration
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- Next.js 13 (App Router)
+- TypeScript
+- MongoDB & Mongoose
+- Tailwind CSS
+- shadcn/ui Components
+- React Query
+- React Hook Form
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1b8e6bb3-8933-40a5-88d4-486699c9c09e) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+1. Clone the repository:
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone <repository-url>
+cd vibe-threads-elegance-builder
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies:
+```sh
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Set up environment variables:
+Create a `.env.local` file with:
+```
+MONGODB_URI=your_mongodb_connection_string
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Run the development server:
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+├── src/
+│   ├── app/           # Next.js 13 app directory
+│   ├── components/    # Reusable components
+│   ├── lib/          # Utilities and helpers
+│   └── contexts/     # React Context providers
+├── backend/
+│   ├── config/       # Database configuration
+│   ├── controllers/  # API controllers
+│   └── models/       # MongoDB models
+└── public/          # Static assets
+```
 
-**Use GitHub Codespaces**
+## Available Scripts
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
 
-## What technologies are used for this project?
+## Contributing
 
-This project is built with:
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## License
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1b8e6bb3-8933-40a5-88d4-486699c9c09e) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+MIT License

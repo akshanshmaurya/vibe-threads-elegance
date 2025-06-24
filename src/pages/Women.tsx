@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, ShoppingCart } from 'lucide-react';
@@ -14,29 +13,29 @@ const Women = () => {
     {
       id: 201,
       name: "Silk Evening Dress",
-      price: 249.99,
+      price: 20749, // Converted from $249.99
       image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop",
       category: "Women"
     },
     {
       id: 202,
       name: "Cashmere Sweater",
-      price: 189.99,
+      price: 15769, // Converted from $189.99
       image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=500&fit=crop",
       category: "Women"
     },
     {
       id: 203,
       name: "Classic Wool Coat",
-      price: 299.99,
-      originalPrice: 399.99,
+      price: 24899, // Converted from $299.99
+      originalPrice: 33199, // Converted from $399.99
       image: "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400&h=500&fit=crop",
       category: "Women"
     },
     {
       id: 204,
       name: "Elegant Midi Skirt",
-      price: 129.99,
+      price: 10789, // Converted from $129.99
       image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=500&fit=crop",
       category: "Women"
     }
@@ -117,10 +116,10 @@ const Women = () => {
                 </h3>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-gold font-bold text-lg">${product.price}</span>
+                    <span className="text-gold font-bold text-lg">₹{product.price}</span>
                     {product.originalPrice && (
                       <span className="text-gray-400 line-through text-sm">
-                        ${product.originalPrice}
+                        ₹{product.originalPrice}
                       </span>
                     )}
                   </div>

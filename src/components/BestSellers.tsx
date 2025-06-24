@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, ShoppingCart } from 'lucide-react';
@@ -11,8 +10,8 @@ const BestSellers = () => {
     {
       id: 1,
       name: "Men's Tailored Wool Blazer",
-      price: 299,
-      originalPrice: 399,
+      price: 24817, // Converted from $299
+      originalPrice: 33117, // Converted from $399
       image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=500&fit=crop",
       category: "Men",
       isNew: false,
@@ -21,7 +20,7 @@ const BestSellers = () => {
     {
       id: 2,
       name: "Women's Silk Midi Dress",
-      price: 199,
+      price: 16517, // Converted from $199
       originalPrice: null,
       image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop",
       category: "Women",
@@ -31,7 +30,7 @@ const BestSellers = () => {
     {
       id: 3,
       name: "Premium Cotton Shirt",
-      price: 89,
+      price: 7387, // Converted from $89
       originalPrice: null,
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=500&fit=crop",
       category: "Men",
@@ -41,8 +40,8 @@ const BestSellers = () => {
     {
       id: 4,
       name: "Children's Organic Cotton Set",
-      price: 59,
-      originalPrice: 79,
+      price: 4897, // Converted from $59
+      originalPrice: 6557, // Converted from $79
       image: "https://images.unsplash.com/photo-1622290291011-1aa8fab01c14?w=400&h=500&fit=crop",
       category: "Children",
       isNew: false,
@@ -51,7 +50,7 @@ const BestSellers = () => {
     {
       id: 5,
       name: "Women's Cashmere Sweater",
-      price: 249,
+      price: 20667, // Converted from $249
       originalPrice: null,
       image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=500&fit=crop",
       category: "Women",
@@ -61,8 +60,8 @@ const BestSellers = () => {
     {
       id: 6,
       name: "Men's Leather Dress Shoes",
-      price: 189,
-      originalPrice: 229,
+      price: 15687, // Converted from $189
+      originalPrice: 19007, // Converted from $229
       image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=500&fit=crop",
       category: "Men",
       isNew: false,
@@ -171,11 +170,11 @@ const BestSellers = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="font-inter text-xl font-bold text-navy">
-                      ${product.price}
+                      ₹{product.price}
                     </span>
                     {product.originalPrice && (
                       <span className="font-inter text-sm text-gray-500 line-through">
-                        ${product.originalPrice}
+                        ₹{product.originalPrice}
                       </span>
                     )}
                   </div>

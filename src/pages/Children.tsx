@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, ShoppingCart } from 'lucide-react';
@@ -14,29 +13,29 @@ const Children = () => {
     {
       id: 301,
       name: "Organic Cotton Set",
-      price: 59.99,
-      originalPrice: 79.99,
+      price: 4979, // Converted from $59.99
+      originalPrice: 6639, // Converted from $79.99
       image: "https://images.unsplash.com/photo-1622290291011-1aa8fab01c14?w=400&h=500&fit=crop",
       category: "Children"
     },
     {
       id: 302,
       name: "Kids Denim Jacket",
-      price: 69.99,
+      price: 5809, // Converted from $69.99
       image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=500&fit=crop",
       category: "Children"
     },
     {
       id: 303,
       name: "Cozy Winter Sweater",
-      price: 49.99,
+      price: 4149, // Converted from $49.99
       image: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a5?w=400&h=500&fit=crop",
       category: "Children"
     },
     {
       id: 304,
       name: "Comfortable Play Outfit",
-      price: 39.99,
+      price: 3319, // Converted from $39.99
       image: "https://images.unsplash.com/photo-1622290291011-1aa8fab01c14?w=400&h=500&fit=crop",
       category: "Children"
     }
@@ -117,10 +116,10 @@ const Children = () => {
                 </h3>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-gold font-bold text-lg">${product.price}</span>
+                    <span className="text-gold font-bold text-lg">₹{product.price}</span>
                     {product.originalPrice && (
                       <span className="text-gray-400 line-through text-sm">
-                        ${product.originalPrice}
+                        ₹{product.originalPrice}
                       </span>
                     )}
                   </div>
