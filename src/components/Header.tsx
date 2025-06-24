@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Search, ShoppingCart, Heart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,12 +35,12 @@ const Header = () => {
           </button>
 
           {/* Logo */}
-          <div className="flex-1 md:flex-none text-center md:text-left">
+          <Link to="/" className="flex-1 md:flex-none text-center md:text-left">
             <h1 className="font-playfair text-2xl md:text-3xl font-bold text-navy">
               TrendVibe Threads
             </h1>
             <p className="text-xs text-gray-600 font-inter">Premium Fashion</p>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 flex-1 justify-center">
@@ -68,12 +69,14 @@ const Header = () => {
             <Button variant="ghost" size="icon" className="text-navy hover:text-gold">
               <Heart className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="text-navy hover:text-gold relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
-            </Button>
+            <Link to="/cart">
+              <Button variant="ghost" size="icon" className="text-navy hover:text-gold relative">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="absolute -top-1 -right-1 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  2
+                </span>
+              </Button>
+            </Link>
           </div>
         </div>
 
