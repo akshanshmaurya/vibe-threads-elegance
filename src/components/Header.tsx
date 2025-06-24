@@ -1,0 +1,107 @@
+
+import React, { useState } from 'react';
+import { Search, ShoppingCart, Heart, Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top bar with promotional message */}
+        <div className="bg-navy text-ivory text-center py-2 text-sm">
+          Free shipping on orders over $75 | Hassle-free returns within 15 days
+        </div>
+        
+        {/* Main header */}
+        <div className="flex items-center justify-between py-4">
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-navy" />
+            ) : (
+              <Menu className="h-6 w-6 text-navy" />
+            )}
+          </button>
+
+          {/* Logo */}
+          <div className="flex-1 md:flex-none text-center md:text-left">
+            <h1 className="font-playfair text-2xl md:text-3xl font-bold text-navy">
+              TrendVibe Threads
+            </h1>
+            <p className="text-xs text-gray-600 font-inter">Premium Fashion</p>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8 flex-1 justify-center">
+            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+              Men
+            </a>
+            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+              Women
+            </a>
+            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+              Children
+            </a>
+            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+              New Arrivals
+            </a>
+            <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium">
+              Sale
+            </a>
+          </nav>
+
+          {/* Right side icons */}
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="icon" className="text-navy hover:text-gold">
+              <Search className="h-5 w-5" />
+            </Button>
+            <Button variant="ghost" size="icon" className="text-navy hover:text-gold">
+              <Heart className="h-5 w-5" />
+            </Button>
+            <Button variant="ghost" size="icon" className="text-navy hover:text-gold relative">
+              <ShoppingCart className="h-5 w-5" />
+              <span className="absolute -top-1 -right-1 bg-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                0
+              </span>
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-100">
+            <nav className="flex flex-col space-y-4">
+              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+                Men
+              </a>
+              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+                Women
+              </a>
+              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+                Children
+              </a>
+              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+                New Arrivals
+              </a>
+              <a href="#" className="text-navy hover:text-gold transition-colors font-inter font-medium py-2">
+                Sale
+              </a>
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
